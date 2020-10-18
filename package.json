@@ -1,13 +1,13 @@
 {
-  "name": "redux-starter",
+  "name": "resource-visualization",
   "version": "1.0.0",
-  "description": "Redux Starter Project",
+  "description": "Virtual Power Point Visualization",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js"
   },
   "keywords": [],
-  "author": "Mosh Hamedani",
+  "author": "Alex Bushinsky",
   "license": "ISC",
   "devDependencies": {
     "webpack": "4.41.6",
