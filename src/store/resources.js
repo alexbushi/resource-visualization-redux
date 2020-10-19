@@ -24,12 +24,35 @@ const slice = createSlice({
             resources.loading = true;
         },
         resourcesReceived: (resources, action) => {
-            resources.list = action.payload
+            resources.list = constructResources(action.payload);
             resources.loading = false;
             resources.lastFetch = Date.now();
         },
     }
 });
+
+const constructResources = payload => {
+
+    const peerConnectedEvsesList = payload.evses_log.filter(evse => evse.peer_connected === "true" && evse.vin !== "");
+    console.log("Length:", peerConnectedEvsesList.length);
+
+    const resourceList = peerConnectedEvsesList.map(evse => {
+        const ev = payload.cars_log.find(car => car.car_name === evse.car_name);
+        return {
+            evse_id: evse.evse_id,
+            vin: ev.vin,
+            evse_name: evse.name,
+            ev_name: ev.car_name,
+            resource_status: ev.primary_status,
+            soc: ev.soc,
+            real_power: evse.power_flow_real_kw,
+            power_capacity: ev.power_capacity_up
+        }
+    });
+    console.log(resourceList);
+
+    return resourceList;
+}
 
 const {
     resourcesRequestFailed, 

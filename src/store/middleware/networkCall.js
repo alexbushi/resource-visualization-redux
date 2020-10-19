@@ -3,7 +3,6 @@ import * as actions from './networkCallActions';
 import { baseURL } from '../../constants';
 
 const api = ({ dispatch }) => next => async action => {
-    console.log("Here in networkCall.js before checking action type$$$$$$");
     if (action.type !== actions.apiCallBegan.type) return next(action);
 
     const { url, method, data, onStart, onSuccess, onError } = action.payload;
