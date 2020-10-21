@@ -2,7 +2,7 @@
 import moment from 'moment';
 import { createSlice } from "@reduxjs/toolkit";
 import { apiCallBegan } from './middleware/networkCallActions';
-import { statusUrl, cacheValidTime } from '../constants';
+import { statusUrl, cacheValidTime } from './constants';
 
 ////////////////////////////////////////////////////////////////////////////////
 // Reducer (creates an action also)
